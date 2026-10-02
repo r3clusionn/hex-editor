@@ -1,0 +1,27 @@
+[package]
+name = "hex-editor"
+version = "0.1.0"
+edition = "2021"
+description = "A terminal hex editor that edits files of any size through memory mapping and a piece table, with search, replace, undo and goto."
+license = "MIT"
+
+[lib]
+name = "hexed"
+
+[[bin]]
+name = "hx"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+crossterm = "0.28"
+memchr = "2"
+memmap2 = "0.9"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+debug = false
